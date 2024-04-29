@@ -11,3 +11,7 @@
 ## Off-page
   - Compartilhamento de links
   - Existir links do seu site sendo compartilhados por outros sites
+
+## SERP - Search Engine Result Page
+- Página de Resultados do Motor de Busca
+- Os primeiros sites exibidos irão mudar de acordo com o SERP
