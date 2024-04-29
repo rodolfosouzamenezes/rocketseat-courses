@@ -15,3 +15,9 @@
 ## SERP - Search Engine Result Page
 - Página de Resultados do Motor de Busca
 - Os primeiros sites exibidos irão mudar de acordo com o SERP
+
+## Core Web Vitals
+Métricas que medem a experiência do usuários em sites, sites como boas pontuações são mais propensos a serem bem ranqueados nos resultados de busca
+![](assets/core-web-vitals.png)
+[https://web.dev/articles/vitals](https://web.dev/articles/vitals)
+Podemos medir os Core Web Vitals usando ferramentas como [PageSpeed Insights](https://pagespeed.web.dev) 
