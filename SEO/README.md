@@ -128,3 +128,15 @@ São utilizados para encontrar uma nova página
   - `ugc`: conteúdos genéricos de usuários
   - `sponsered`: links pagos
   - Esses atributos podem ser utilizados juntos, apenas separados por vírgulas
+
+## Sitemap
+- Um arquivo que lista todas as páginas de um website
+- Ajuda os mecanismos de busca a encontrar e indexar seu site com maior eficiência
+- Comunica páginas novas, atualizadas e/ou relevantes
+- Sites com muito conteúdo rico <br>
+  Informações mais detalhadas sobre o tipo de conteúdo
+  - Vídeo: duração, avaliação, restrição de idade
+  - Imagem: localização da imagem
+  - Notícias: título e data de publicação
+- Sites grandes e complexos
+- Sites novos
