@@ -97,4 +97,34 @@ No entanto, existem alternativas que foram desenvolvidas considerando os motores
   - http + com o www 
 - Trabalhe com redirecionamento canônico <br>
   Defina uma principal e redirecione todas a as outras para essa página, para evitar conteúdo duplicado
-  
+
+## Links
+São utilizados para encontrar uma nova página
+
+- Os links vão ser ratreáveis apenas pela tag `<a>`com o atrubuto `href`
+- Qualidade do texto no link
+  - Tetxo claro do que a página referência é
+  - Pode usar o atributo `title` para isso
+  - Se for imagem, o Google irá utilizar o atributo `alt` da imagem com texto
+  - Simples conciso, natural
+
+### Links internos
+- Referencia ao próprio conteúdo
+- Melhor entendimento do Google ao site como um todo
+- Ajuda a encontrar outras páginas dentro do seu próprio site
+- Recomendado ter ao menos 1 link referênciando outra página <br>
+  Ajuda na experiÊncia do usuário
+
+### Links externos
+- Ajuda a estabelecer confiança  <br>
+  Geralmente as pessoas irão citar bons cites para seus leitores <br>
+  O robô entende que o conteúdo é relevante, pois está citando a fonte
+
+- É ótimo para o robô encontrar bons sites <br>
+  Aumenta a relevância do cite citado perante o Googlebot
+
+- Qualificando os links externos com `rel` (relationship)
+  - `no-follow`: se você não confiar na fonte
+  - `ugc`: conteúdos genéricos de usuários
+  - `sponsered`: links pagos
+  - Esses atributos podem ser utilizados juntos, apenas separados por vírgulas
