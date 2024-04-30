@@ -48,3 +48,53 @@ Alguns frameworks passam por essa etapa de renderização, já que são constru�
 No entanto, existem alternativas que foram desenvolvidas considerando os motores de busca e a otimização para SEO: Next.js, Astro.build, Wordpress
 
 ![](assets/rendering.png)
+
+## URL - Uniform Resourse Locator
+
+- O motor de busca do Google leva em concideração o [RCF 3986](https://www.rfc-editor.org/rfc/rfc3986), que é um padrão de como funciona as URLs/URIs
+- Não podem conter caracteres especiais e nem espaços
+  - Serão convertidas em um formato ASCII válido
+
+### Melhores práticas para URLs
+- Simples e descritiva <br>
+  [https://blog.rocketseat.com.br/como-iniciar-em-programacao]()
+- Palavras descritivas na URL, se aplicavél <br>
+  [https://blog.rocketseat.com.br/br/iniciantes/aprender-programacao]()
+- UTF-8 encoding <br>
+  [https://blog.rocketseat.com.br/br/programa%25E7%25E3o]()
+
+### Piores práticas para URLs
+- Ruim para a leitura de um ser humano <br>
+  [https://blog.rocketseat.com.br/index.php?sid=190fd9df98&tid=31]()
+- NO-ASCII caracteres <br>
+  [https://blog.rocketseat.com.br/programação]()
+- Underscore <br>
+  [https://blog.rocketseat.com.br/como_iniciar_em_programacao]()
+- Palavras juntas = Ruim para a leitura de um ser humano<br>
+  [https://blog.rocketseat.com.br/comoiniciaremprogramacao]()
+
+
+### Dicas
+- Crie uma estrutura de URL simples <br>
+  Considere organizar seu conteúdo de forma que as URLs sejam construídas de maneira lógica e mais inteligível para os humanos
+- Usar um arquivo `robots.txt`para bloquear o acesso do Googlebot a URLs problemáticas <br>
+  Considere bloquear URLs dinâmicas, como URLs que geram resultados de pesquisa, ou URLs que pode criar espaços infinitos, como calendários. <br>
+  Usar expressões regulares pode permitir que você bloqueie facilmente um grande número de URLs
+- Evite uso de IDs de sessão em URLs
+- Mantenha a URL homogênea, use letras maiúsculas ou minúsculas <br>
+- Encurte as URLs, removendo parâmetros desnecessários
+- Se o seu site tem um calendário infinito, adicione um atributo `no-follow` aos links
+- Verifique links quebrados
+
+### Certificado SSL
+- Dados encriptados
+- `https` é mais relevante que o `http`
+- Para o Googlebot a URL com e sem `www` são diferentes
+- Adicione todas a variações no Search Console
+  - https + sem o www 
+  - https + com o www 
+  - http + sem o www 
+  - http + com o www 
+- Trabalhe com redirecionamento canônico <br>
+  Defina uma principal e redirecione todas a as outras para essa página, para evitar conteúdo duplicado
+  
