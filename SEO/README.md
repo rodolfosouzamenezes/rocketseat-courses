@@ -32,8 +32,19 @@ Como trabalham os robôs e algoritmos do Google, aqui também temos a [Documenta
 
 O estágio de rastreamento (crawling) é o primeiro passo do processo de indexação do Google. Durante essa etapa, os "bots" do Google, conhecidos como "Googlebot", percorrem a web em busca de novas páginas ou de alterações em páginas já conhecidas. Esses bots seguem links de uma página para outra, identificando novos conteúdos para indexar. O rastreamento é contínuo e dinâmico, já que a web está em constante evolução com novos sites, páginas e atualizações.
 
-## 02 - Indexing
+### 02 - Indexing
 Após o rastreamento, as páginas encontradas pelo Googlebot são processadas e adicionadas ao índice do Google. O processo de indexação envolve analisar o conteúdo das páginas, entender sua relevância, identificar palavras-chave e organizar essas informações de forma a facilitar a recuperação posterior pelos usuários através das pesquisas. Durante a indexação, o Google também leva em consideração fatores como a qualidade do conteúdo, a autoridade do site e a experiência do usuário para determinar a posição nos resultados de busca.
 
-## 03 - Serving
+### 03 - Serving
 O estágio de servir (serving) refere-se à entrega dos resultados de busca aos usuários quando realizam uma consulta no Google. Nessa fase, o algoritmo de busca do Google processa a consulta do usuário, busca no índice as páginas relevantes e as classifica de acordo com vários fatores, como relevância, autoridade do site, localização geográfica, entre outros. Os resultados são então apresentados aos usuários em forma de SERP (página de resultados de busca), onde podem encontrar os links para as páginas mais relevantes de acordo com sua pesquisa.
+
+## Rendering
+Processo de interpretação e renderização do JavaScript para o HTML
+
+A interpretação ocorre como se fosse pelo navegador.
+Esse processo pode levar dias ou semanas em alguns casos.
+Alguns frameworks passam por essa etapa de renderização, já que são construídos principalmente em JavaScript: Vue, Angular, React...
+
+No entanto, existem alternativas que foram desenvolvidas considerando os motores de busca e a otimização para SEO: Next.js, Astro.build, Wordpress
+
+![](assets/rendering.png)
