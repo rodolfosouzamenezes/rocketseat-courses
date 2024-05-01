@@ -1,6 +1,6 @@
-# ToDo List - [VER DEPLOY](https://todo-list-kappa-roan.vercel.app)
+# Ignite Timer - [VER DEPLOY]()
 
-Projeto de Todo List, onde temos as funções relacionadas ao controle de tarefas concluídas
+Projeto de um timer para gerenciar o tempo de trabalho projetos 
 
 ![thumbnail](./docs/thumbnail.png)
 
@@ -14,7 +14,7 @@ Projeto de Todo List, onde temos as funções relacionadas ao controle de tarefa
 
 ## Manual de uso
 
-### Inicialiando o site - [http://localhost:5173/](http://localhost:5173/)
+### Inicialiando o site - [http://localhost:3000/](http://localhost:3000/)
 
 ```sh
 npm install
