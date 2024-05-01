@@ -1,6 +1,6 @@
-# Ignite Timer - [VER DEPLOY]()
+# Ignite Timer - [VER DEPLOY](https://ignite-timer-tau-gray.vercel.app)
 
-Projeto de um timer para gerenciar o tempo de trabalho projetos 
+Projeto de um timer para gerenciar o tempo de trabalho em projetos 
 
 ![thumbnail](./docs/thumbnail.png)
 
