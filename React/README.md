@@ -1,9 +1,40 @@
 # Trilha ReactJS
 
-### 1.1 - Ignite Feed - ( [Projeto](./ignite-feed/) | [Figma](https://www.figma.com/community/file/1113573231685349036) | [Deploy](https://ignite-feed-navy-six.vercel.app) )
+<h3>1.1 - Ignite Feed - 
+  ( 
+    <a href="./ignite-feed/"> Projeto</a>
+    | 
+    <a href="https://www.figma.com/community/file/1113573231685349036" target="_blank"> Figma</a>
+    |
+    <a href="https://ignite-feed-navy-six.vercel.app" target="_blank"> Deploy </a>
+  )
+</h3>
+<h3>1.2 - Todo List - 
+  ( 
+    <a href="./todo-list/"> Projeto</a>
+    | 
+    <a href="https://www.figma.com/community/file/1367520320393838157" target="_blank"> Figma</a>
+    |
+    <a href="https://todo-list-kappa-roan.vercel.app" target="_blank"> Deploy </a>
+  )
+</h3>
 
-### 1.2 - ToDo List - ( [Projeto](./todo-list/) | [Figma](https://www.figma.com/community/file/1367520320393838157) | [Deploy](https://todo-list-kappa-roan.vercel.app) )
+<h3>2.1 - Ignite Timer - 
+  ( 
+    <a href="./ignite-timer/"> Projeto</a>
+    | 
+    <a href="https://www.figma.com/community/file/1127351821076435124" target="_blank"> Figma</a>
+    |
+    <a href="https://ignite-timer-tau-gray.vercel.app" target="_blank"> Deploy </a>
+  )
+</h3>
 
-### 2.1 - Ignite Timer - ( [Projeto](./ignite-timer/) | [Figma](https://www.figma.com/community/file/1127351821076435124) | [Deploy](https://ignite-timer-tau-gray.vercel.app) )
-
-### 2.1 - Coffee Delivery - ( [Projeto](./coffee-delivery/) | [Figma](https://www.figma.com/community/file/1367562742660395633) | [Deploy](https://coffee-delivery-iota-weld.vercel.app) )
+<h3>2.2 - Coffee Delivery - 
+  ( 
+    <a href="./coffee-delivery/"> Projeto</a>
+    | 
+    <a href="https://www.figma.com/community/file/1367562742660395633" target="_blank"> Figma</a>
+    |
+    <a href="https://coffee-delivery-iota-weld.vercel.app" target="_blank"> Deploy </a>
+  )
+</h3>
