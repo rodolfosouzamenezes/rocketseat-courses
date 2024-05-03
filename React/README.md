@@ -38,3 +38,13 @@
     <a href="https://coffee-delivery-iota-weld.vercel.app" target="_blank"> Deploy </a>
   )
 </h3>
+
+<h3>3.1 - DT Money - 
+  ( 
+    <a href="./dt-money/"> Projeto</a>
+    | 
+    <a href="https://www.figma.com/community/file/1138814493269096792" target="_blank"> Figma</a>
+    |
+    <a href="" target="_blank"> Deploy </a>
+  )
+</h3>
