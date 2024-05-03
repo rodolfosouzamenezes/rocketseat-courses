@@ -6,7 +6,7 @@
     | 
     <a href="https://www.figma.com/community/file/1113573231685349036" target="_blank"> Figma</a>
     |
-    <a href="https://ignite-feed-navy-six.vercel.app" target="_blank"> Deploy </a>
+    <a href="https://ignite-feed-liard-two.vercel.app" target="_blank"> Deploy </a>
   )
 </h3>
 <h3>1.2 - Todo List - 
@@ -15,7 +15,7 @@
     | 
     <a href="https://www.figma.com/community/file/1367520320393838157" target="_blank"> Figma</a>
     |
-    <a href="https://todo-list-kappa-roan.vercel.app" target="_blank"> Deploy </a>
+    <a href="https://todo-list-delta-teal.vercel.app" target="_blank"> Deploy </a>
   )
 </h3>
 

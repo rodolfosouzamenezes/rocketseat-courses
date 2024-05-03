@@ -1,4 +1,4 @@
-# ToDo List - [VER DEPLOY](https://todo-list-kappa-roan.vercel.app)
+# ToDo List - [VER DEPLOY](https://todo-list-delta-teal.vercel.app)
 
 Projeto de Todo List, onde temos as funções relacionadas ao controle de tarefas concluídas
 
