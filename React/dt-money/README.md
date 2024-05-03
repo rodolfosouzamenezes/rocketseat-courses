@@ -1,6 +1,6 @@
-# DT Money - [VER DEPLOY]()
+# DT Money - [VER DEPLOY](https://dt-money-three-rust.vercel.app)
 
-Projeto de um timer para gerenciar o tempo de trabalho em projetos 
+Projeto para controle fincanceiro
 
 ![thumbnail](./docs/thumbnail.png)
 
@@ -16,7 +16,7 @@ Projeto de um timer para gerenciar o tempo de trabalho em projetos
 
 ## Manual de uso
 
-### Inicialiando o site - [http://localhost:3000/](http://localhost:3000/)
+### Inicialiando o site - [http://localhost:5173/](http://localhost:5173/)
 
 ```sh
 npm install

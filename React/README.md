@@ -45,6 +45,6 @@
     | 
     <a href="https://www.figma.com/community/file/1138814493269096792" target="_blank"> Figma</a>
     |
-    <a href="" target="_blank"> Deploy </a>
+    <a href="https://dt-money-three-rust.vercel.app" target="_blank"> Deploy </a>
   )
 </h3>
