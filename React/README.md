@@ -25,7 +25,7 @@
     | 
     <a href="https://www.figma.com/community/file/1127351821076435124" target="_blank"> Figma</a>
     |
-    <a href="https://ignite-timer-tau-gray.vercel.app" target="_blank"> Deploy </a>
+    <a href="https://ignite-timer-psi-brown.vercel.app" target="_blank"> Deploy </a>
   )
 </h3>
 

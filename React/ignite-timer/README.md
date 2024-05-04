@@ -1,4 +1,4 @@
-# Ignite Timer - [VER DEPLOY](https://ignite-timer-tau-gray.vercel.app)
+# Ignite Timer - [VER DEPLOY](https://ignite-timer-psi-brown.vercel.app)
 
 Projeto de um timer para gerenciar o tempo de trabalho em projetos 
 
