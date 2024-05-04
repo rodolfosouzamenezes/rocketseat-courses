@@ -35,7 +35,7 @@
     | 
     <a href="https://www.figma.com/community/file/1367562742660395633" target="_blank"> Figma</a>
     |
-    <a href="https://coffee-delivery-iota-weld.vercel.app" target="_blank"> Deploy </a>
+    <a href="https://coffee-delivery-dun-gamma.vercel.app" target="_blank"> Deploy </a>
   )
 </h3>
 

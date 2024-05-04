@@ -1,4 +1,4 @@
-# Coffee Delivery - [VER DEPLOY](https://coffee-delivery-iota-weld.vercel.app)
+# Coffee Delivery - [VER DEPLOY](https://coffee-delivery-dun-gamma.vercel.app)
 
 Coffee Delivery é uma página web de catálogo e compra de cafés.
 
