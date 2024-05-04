@@ -15,7 +15,7 @@
     | 
     <a href="https://www.figma.com/community/file/1367520320393838157" target="_blank"> Figma</a>
     |
-    <a href="https://todo-list-delta-teal.vercel.app" target="_blank"> Deploy </a>
+    <a href="https://todo-list-rust-five-82.vercel.app" target="_blank"> Deploy </a>
   )
 </h3>
 
