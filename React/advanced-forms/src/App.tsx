@@ -44,7 +44,7 @@ const createUserFormSchema = z
             .max(100, "O máximo do nível de conhecimento é 100"),
         })
       )
-      .min(3, "Insira pelo menos 2 tecnoligias")
+      .min(2, "Insira pelo menos 2 tecnoligias")
       .refine((techs) => {
         return techs.some((tech) => tech.knowledge >= 20);
       }, "Você deve ter pelo menos uma tecnologia maior ou igual á 20"),
@@ -196,8 +196,10 @@ function App() {
             );
           })}
 
-          {errors.techs && (
-            <span className="text-red-600 text-sm">{errors.techs.message}</span>
+          {errors.techs?.root && (
+            <span className="text-red-600 text-sm">
+              {errors.techs?.root.message}
+            </span>
           )}
         </div>
 
