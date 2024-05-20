@@ -48,3 +48,16 @@
     <a href="https://dt-money-three-rust.vercel.app" target="_blank"> Deploy </a>
   )
 </h3>
+
+# Conteúdo Extra
+
+<h3>Formulários Avançados - 
+  ( 
+    <a href="./advanced-forms/"> Projeto</a>
+    | 
+    <a href="https://www.youtube.com/live/XSbMSSdGSdg?si=KTmwje9N6xMHmX-K" target="_blank"> Vídeo</a>
+    |
+    <a href="" target="_blank"> Deploy </a>
+  )
+</h3>
+
