@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import "./styles/global.css";
 import { useState } from "react";
 import { z } from "zod";
@@ -34,6 +34,20 @@ const createUserFormSchema = z
       .string()
       .min(6, "A senha precisa de no mínimo 6 caracteres")
       .max(12, "A senha precisa ter no máximo 12 caracteres"),
+    techs: z
+      .array(
+        z.object({
+          title: z.string().min(1, "O título é obrigatório"),
+          knowledge: z.coerce
+            .number()
+            .min(1, "Informe um nível de conhecimento")
+            .max(100, "O máximo do nível de conhecimento é 100"),
+        })
+      )
+      .min(3, "Insira pelo menos 2 tecnoligias")
+      .refine((techs) => {
+        return techs.some((tech) => tech.knowledge >= 20);
+      }, "Você deve ter pelo menos uma tecnologia maior ou igual á 20"),
   })
   .superRefine(({ confirmPassword, password }, ctx) => {
     if (confirmPassword !== password) {
@@ -50,12 +64,33 @@ type CreateUserFormData = z.infer<typeof createUserFormSchema>;
 function App() {
   const [output, setOutput] = useState("");
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<CreateUserFormData>({
     resolver: zodResolver(createUserFormSchema),
+    defaultValues: {
+      techs: [
+        {
+          title: "",
+          knowledge: 1,
+        },
+      ],
+    },
   });
+
+  const { fields, append } = useFieldArray({
+    name: "techs",
+    control,
+  });
+
+  const addNewTech = () => {
+    append({
+      title: "",
+      knowledge: 1,
+    });
+  };
 
   const createUser = (data: CreateUserFormData) => {
     setOutput(JSON.stringify(data, null, 2));
@@ -115,6 +150,54 @@ function App() {
             <span className="text-red-600 text-sm">
               {errors.confirmPassword.message}
             </span>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label htmlFor="" className="flex items-center justify-between">
+            Tecnologias
+            <button
+              type="button"
+              onClick={addNewTech}
+              className="text-emerald-500 text-sm hover:underline"
+            >
+              Adicionar
+            </button>
+          </label>
+          {fields.map((field, index) => {
+            return (
+              <div key={field.id} className="flex gap-2">
+                <div className="flex flex-col gap-1 flex-1">
+                  <input
+                    type="text"
+                    className="border border-zinc-800 bg-zinc-900 text-white shadow-sm rounded h-10 px-3"
+                    {...register(`techs.${index}.title`)}
+                  />
+                  {errors.techs?.[index]?.title && (
+                    <span className="text-red-600 text-sm">
+                      {errors.techs?.[index]?.title.message}
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <input
+                    type="number"
+                    className="w-16 border border-zinc-800 bg-zinc-900 text-white shadow-sm rounded h-10 px-3"
+                    {...register(`techs.${index}.knowledge`)}
+                  />
+                  {errors.techs?.[index]?.knowledge && (
+                    <span className="text-red-600 text-sm">
+                      {errors.techs?.[index]?.knowledge.message}
+                    </span>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+
+          {errors.techs && (
+            <span className="text-red-600 text-sm">{errors.techs.message}</span>
           )}
         </div>
 
