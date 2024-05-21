@@ -3,21 +3,31 @@ import "./styles/global.css";
 import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { XCircle } from "lucide-react";
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5mb
+const ACCEPTED_IMAGE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
 
 const createUserFormSchema = z
   .object({
     avatar: z
       .instanceof(FileList)
       .refine(
-        (fileList) => fileList[0]?.name,
-        "Insira um arquivo"
+        (files) => files.item(0)?.name,
+        "A imagem de perfil é obrigatória"
       )
       .transform((fileList) => {
         return fileList.item(0)!;
       })
+      .refine((file) => file.size <= MAX_FILE_SIZE, `Tamanho máximo de 5MB`)
       .refine(
-        (file) => file!.size <= 5 * 1024 * 1024,
-        "O arquivo precisa ter no máximo 5MB"
+        (file) => ACCEPTED_IMAGE_TYPES.includes(file.type),
+        "Formato de imagem inválido"
       ),
     name: z
       .string()
@@ -45,8 +55,7 @@ const createUserFormSchema = z
       .max(12, "A senha precisa ter no máximo 12 caracteres"),
     confirmPassword: z
       .string()
-      .min(6, "A senha precisa de no mínimo 6 caracteres")
-      .max(12, "A senha precisa ter no máximo 12 caracteres"),
+      .min(1, "As senhas não batem"),
     techs: z
       .array(
         z.object({
@@ -82,6 +91,7 @@ type CreateUserFormData = z.infer<typeof createUserFormSchema>;
 function App() {
   const [output, setOutput] = useState("");
   const {
+    watch,
     control,
     register,
     handleSubmit,
@@ -98,7 +108,12 @@ function App() {
     },
   });
 
-  const { fields, append } = useFieldArray({
+  const userPassword = watch("password");
+  const isPasswordStrong = new RegExp(
+    "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})"
+  ).test(userPassword);
+
+  const { fields, append, remove } = useFieldArray({
     name: "techs",
     control,
   });
@@ -113,10 +128,16 @@ function App() {
   const createUser = async (data: CreateUserFormData) => {
     console.log(data.avatar);
 
-    setOutput(JSON.stringify({
-      ...data,
-      avatar: data.avatar.name,
-    }, null, 2));
+    setOutput(
+      JSON.stringify(
+        {
+          ...data,
+          avatar: data.avatar.size,
+        },
+        null,
+        2
+      )
+    );
   };
 
   return (
@@ -158,7 +179,14 @@ function App() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <label htmlFor="password">Senha</label>
+          <div className="flex w-full justify-between">
+            <label htmlFor="password">Senha</label>{" "}
+            {isPasswordStrong ? (
+              <span className="text-xs text-emerald-600">Senha forte</span>
+            ) : (
+              <span className="text-xs text-amber-500">Senha fraca</span>
+            )}
+          </div>
           <input
             type="password"
             className="border border-zinc-800 bg-zinc-900 text-white shadow-sm rounded h-10 px-3"
@@ -218,6 +246,13 @@ function App() {
                       {...register(`techs.${index}.knowledge`)}
                     />
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => remove(index)}
+                    className="text-red-500"
+                  >
+                    <XCircle size={14} />
+                  </button>
                 </div>
                 {techError && (
                   <span className="text-red-600 text-sm">
@@ -242,7 +277,9 @@ function App() {
           Salvar
         </button>
       </form>
-      <pre>{output}</pre>
+      <pre className="text-sm bg-zinc-800 text-zinc-100 p-6 rounded-lg">
+        {output}
+      </pre>
     </main>
   );
 }
