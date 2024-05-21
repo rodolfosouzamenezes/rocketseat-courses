@@ -6,6 +6,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const createUserFormSchema = z
   .object({
+    avatar: z
+      .instanceof(FileList)
+      .refine(
+        (fileList) => fileList[0]?.name,
+        "Insira um arquivo"
+      )
+      .transform((fileList) => {
+        return fileList.item(0)!;
+      })
+      .refine(
+        (file) => file!.size <= 5 * 1024 * 1024,
+        "O arquivo precisa ter no máximo 5MB"
+      ),
     name: z
       .string()
       .min(1, "O email é obrigatório")
@@ -46,10 +59,12 @@ const createUserFormSchema = z
       )
       .min(2, "Insira pelo menos 2 tecnoligias")
       .refine((techs) => {
-        return techs.some((tech) => tech.knowledge > 20);
-      }, "Pelo menos uma tecnologia deve ser maior que 20")
+        return techs.some((tech) => tech.knowledge > 2);
+      }, "Pelo menos uma tecnologia deve ser maior que 2")
       .refine((techs) => {
-        return techs.some((tech, index) => techs.indexOf(tech) !== index)
+        const titles = techs.map((item) => item.title);
+        const uniqueTitle = new Set(titles);
+        return uniqueTitle.size === techs.length;
       }, "Não insira tecnologoias repetidas"),
   })
   .superRefine(({ confirmPassword, password }, ctx) => {
@@ -95,16 +110,30 @@ function App() {
     });
   };
 
-  const createUser = (data: CreateUserFormData) => {
-    setOutput(JSON.stringify(data, null, 2));
+  const createUser = async (data: CreateUserFormData) => {
+    console.log(data.avatar);
+
+    setOutput(JSON.stringify({
+      ...data,
+      avatar: data.avatar.name,
+    }, null, 2));
   };
 
   return (
-    <main className="h-screen bg-zinc-950 text-zinc-300 flex flex-col gap-10 items-center justify-center">
+    <main className="min-h-screen bg-zinc-950 text-zinc-300 flex flex-col gap-10 items-center justify-center">
       <form
         onSubmit={handleSubmit(createUser)}
         className="flex flex-col gap-4 w-full max-w-xs"
       >
+        <div className="flex flex-col gap-1">
+          <label htmlFor="avatar">Avatar</label>
+          <input type="file" accept="image/*" {...register("avatar")} />
+          {errors.avatar && (
+            <span className="text-red-600 text-sm">
+              {errors.avatar.message}
+            </span>
+          )}
+        </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="name">Nome</label>
           <input
@@ -168,7 +197,8 @@ function App() {
             </button>
           </label>
           {fields.map((field, index) => {
-            const techError = errors.techs?.[index]?.title || errors.techs?.[index]?.knowledge
+            const techError =
+              errors.techs?.[index]?.title || errors.techs?.[index]?.knowledge;
 
             return (
               <div key={field.id}>
