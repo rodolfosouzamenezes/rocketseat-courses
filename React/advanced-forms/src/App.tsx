@@ -31,7 +31,7 @@ const createUserFormSchema = z
       ),
     name: z
       .string()
-      .min(1, "O email é obrigatório")
+      .min(1, "O nome é obrigatório")
       .transform((name) => {
         return name
           .trim()
@@ -53,9 +53,7 @@ const createUserFormSchema = z
       .string()
       .min(6, "A senha precisa de no mínimo 6 caracteres")
       .max(12, "A senha precisa ter no máximo 12 caracteres"),
-    confirmPassword: z
-      .string()
-      .min(1, "As senhas não batem"),
+    confirmPassword: z.string().min(1, "As senhas não batem"),
     techs: z
       .array(
         z.object({
@@ -277,7 +275,7 @@ function App() {
           Salvar
         </button>
       </form>
-      <pre className="text-sm bg-zinc-800 text-zinc-100 p-6 rounded-lg">
+      <pre className="text-sm max-w-sm w-full bg-zinc-800 text-zinc-100 p-6 rounded-lg">
         {output}
       </pre>
     </main>
