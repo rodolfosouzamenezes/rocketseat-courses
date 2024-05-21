@@ -46,8 +46,11 @@ const createUserFormSchema = z
       )
       .min(2, "Insira pelo menos 2 tecnoligias")
       .refine((techs) => {
-        return techs.some((tech) => tech.knowledge >= 20);
-      }, "Você deve ter pelo menos uma tecnologia maior ou igual á 20"),
+        return techs.some((tech) => tech.knowledge > 20);
+      }, "Pelo menos uma tecnologia deve ser maior que 20")
+      .refine((techs) => {
+        return techs.some((tech, index) => techs.indexOf(tech) !== index)
+      }, "Não insira tecnologoias repetidas"),
   })
   .superRefine(({ confirmPassword, password }, ctx) => {
     if (confirmPassword !== password) {
@@ -165,33 +168,32 @@ function App() {
             </button>
           </label>
           {fields.map((field, index) => {
-            return (
-              <div key={field.id} className="flex gap-2">
-                <div className="flex flex-col gap-1 flex-1">
-                  <input
-                    type="text"
-                    className="border border-zinc-800 bg-zinc-900 text-white shadow-sm rounded h-10 px-3"
-                    {...register(`techs.${index}.title`)}
-                  />
-                  {errors.techs?.[index]?.title && (
-                    <span className="text-red-600 text-sm">
-                      {errors.techs?.[index]?.title.message}
-                    </span>
-                  )}
-                </div>
+            const techError = errors.techs?.[index]?.title || errors.techs?.[index]?.knowledge
 
-                <div className="flex flex-col gap-1">
-                  <input
-                    type="number"
-                    className="w-16 border border-zinc-800 bg-zinc-900 text-white shadow-sm rounded h-10 px-3"
-                    {...register(`techs.${index}.knowledge`)}
-                  />
-                  {errors.techs?.[index]?.knowledge && (
-                    <span className="text-red-600 text-sm">
-                      {errors.techs?.[index]?.knowledge.message}
-                    </span>
-                  )}
+            return (
+              <div key={field.id}>
+                <div className="flex gap-2">
+                  <div className="flex flex-col gap-1 flex-1">
+                    <input
+                      type="text"
+                      className="border border-zinc-800 bg-zinc-900 text-white shadow-sm rounded h-10 px-3"
+                      {...register(`techs.${index}.title`)}
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <input
+                      type="number"
+                      className="w-16 border border-zinc-800 bg-zinc-900 text-white shadow-sm rounded h-10 px-3"
+                      {...register(`techs.${index}.knowledge`)}
+                    />
+                  </div>
                 </div>
+                {techError && (
+                  <span className="text-red-600 text-sm">
+                    {techError.message}
+                  </span>
+                )}
               </div>
             );
           })}
