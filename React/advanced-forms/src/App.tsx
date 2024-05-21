@@ -3,7 +3,8 @@ import "./styles/global.css";
 import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { XCircle } from "lucide-react";
+import { LoaderCircle, XCircle } from "lucide-react";
+import { supabase, SUPABASE_BUCKET } from "./lib/supabase";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5mb
 const ACCEPTED_IMAGE_TYPES = [
@@ -93,7 +94,7 @@ function App() {
     control,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<CreateUserFormData>({
     resolver: zodResolver(createUserFormSchema),
     defaultValues: {
@@ -124,7 +125,15 @@ function App() {
   };
 
   const createUser = async (data: CreateUserFormData) => {
-    console.log(data.avatar);
+    const { data: uploadData, error } = await supabase.storage
+    .from(SUPABASE_BUCKET)
+    .upload(`avatars/${data.avatar?.name}`, data.avatar, {
+      cacheControl: "3600",
+      upsert: false,
+    });
+    
+    console.log({avatarFile: data.avatar});
+    console.log({ uploadData, error });
 
     setOutput(
       JSON.stringify(
@@ -270,9 +279,11 @@ function App() {
 
         <button
           type="submit"
-          className="bg-emerald-500 mt-4 rounded font-semibold text-white h-10 hover:bg-emerald-600"
+          disabled={isSubmitting}
+          className={`${!isSubmitting ? 'bg-emerald-500 hover:bg-emerald-600' : 'bg-zinc-600'} mt-4 rounded font-semibold flex justify-center items-center gap-4 text-white h-10`}
         >
-          Salvar
+          {!isSubmitting ? 'Salvar' : 'Enviando...'}
+          {isSubmitting && <LoaderCircle className="h-4 w-4 animate-spin"  />}
         </button>
       </form>
       <pre className="text-sm max-w-sm w-full bg-zinc-800 text-zinc-100 p-6 rounded-lg">
